@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #aa3325;  /* buttons/links */
+  --color-brand-accent:  #d54d2f;  /* hovers/highlights */
+  --color-brand-ink:     #252322;  /* main text */
+  --color-brand-surface: #dad7d5;  /* cards/borders */
+  --color-brand-deep:    #6c261e;  /* deep accents */
+
+  --font-poppins: "Poppins", ui-sans-serif, system-ui, sans-serif;
+  --shadow-soft: 0 10px 24px rgba(0,0,0,.08);
+}
+
+/* ---- Base styles ---- */
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { @apply font-poppins text-brand-ink bg-white; }
+  h1,h2,h3,h4 { @apply font-poppins; }
+  a { @apply underline-offset-4 decoration-transparent hover:decoration-current transition; }
+}
+
+/* Optional: subtle animated underline utility */
+.link-underline { position: relative; }
+.link-underline::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: currentColor; transition: width .25s ease; }
+.link-underline:hover::after { width: 100%; }
