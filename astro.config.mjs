@@ -12,6 +12,8 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()]
   },
+   site: 'https://otundeoladipo7021.github.io',
+  base: '/MasterCaterer/',
 
   integrations: [react(), sitemap()]
 });
