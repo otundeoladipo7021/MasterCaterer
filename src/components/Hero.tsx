@@ -1,10 +1,16 @@
 import { motion } from 'framer-motion'
+import { withBase } from '../lib/path'
+import heroImg from '../images/setup3.jpeg?url'
+
+// Robust image URL (works on all routes & on GH Pages)
+// Make sure the file exists at: src/components/Hero-image.jpeg
+
 
 export default function Hero() {
   return (
     <section className="full-bleed bg-white">
       <div className="mx-auto max-w-7xl px-4 py-12 md:py-16 grid md:grid-cols-12 gap-6 md:gap-10 items-center">
-        {/* Left: text (layered above just in case) */}
+        {/* Left: text */}
         <div className="md:col-span-6 lg:col-span-5 z-10">
           <motion.h1
             className="text-4xl md:text-5xl font-extrabold"
@@ -32,13 +38,13 @@ export default function Hero() {
             transition={{ delay: 0.15, duration: 0.35 }}
           >
             <a
-              href="/contact"
+              href={withBase('contact')}
               className="px-5 py-3 rounded-2xl text-white shadow-[var(--shadow-soft)] hover:translate-y-[-1px] transition bg-brand-primary"
             >
               Get a Quote
             </a>
             <a
-              href="/gallery"
+              href={withBase('gallery')}
               className="px-5 py-3 rounded-2xl border border-brand-surface hover:shadow-[var(--shadow-soft)] transition"
             >
               View Gallery
@@ -46,10 +52,10 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Right: image (capped width, gentle nudge only) */}
+        {/* Right: image */}
         <div className="md:col-span-6 lg:col-span-7 md:justify-self-end">
           <motion.img
-            src="src/components/Hero-image.jpeg"
+            src={heroImg}
             alt="Signature dishes"
             className="
               rounded-2xl shadow-[var(--shadow-soft)]

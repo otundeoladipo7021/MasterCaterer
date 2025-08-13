@@ -35,7 +35,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="h-0.5 bg-brand-surface/70" />
+      
       <div className="bg-brand-ink">
         <nav className="mx-auto max-w-6xl px-4">
           <div className="flex items-center md:justify-center justify-between py-3">

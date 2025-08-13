@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
+import { withBase } from '../lib/path'
 
 type Shot = { src: string; alt: string }
 
@@ -150,7 +151,7 @@ export default function GalleryStrip() {
 
         <div className="mt-8">
           <a
-            href="/gallery"
+            href={withBase('gallery')}
             className="px-5 py-3 rounded-2xl border border-brand-surface hover:shadow-[var(--shadow-soft)] transition inline-block"
             aria-disabled="true"
             title="Full gallery coming soon"
