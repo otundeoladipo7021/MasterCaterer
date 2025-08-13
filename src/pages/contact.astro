@@ -32,11 +32,13 @@ import Base from '../layouts/Base.astro';
 
       <!-- Right: form -->
       <div class="rounded-2xl border border-brand-surface p-6">
-        <!-- 3A: FORMSPREE — replace XXXXXXXX with your form ID -->
-        <!-- Create a form at https://formspree.io/ , then paste its ID -->
+        <!-- Replace XXXXXXXXXX with your Formspree form ID -->
         <form id="contactForm" action="https://formspree.io/f/xgvzdjqn" method="POST" class="space-y-4">
-          <!-- Honeypot (simple anti-spam) -->
+          <!-- Honeypot -->
           <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off" />
+          <!-- Source + Service (hidden) -->
+          <input type="hidden" name="source" value="Website Contact" />
+          <input id="serviceField" type="hidden" name="service" value="" />
 
           <div>
             <label for="name" class="block text-sm font-medium">Name</label>
@@ -68,9 +70,6 @@ import Base from '../layouts/Base.astro';
             ></textarea>
           </div>
 
-          <!-- Optional: where the enquiry came from -->
-          <input type="hidden" name="source" value="Website Contact" />
-
           <div class="flex items-center gap-3">
             <button
               type="submit"
@@ -79,8 +78,6 @@ import Base from '../layouts/Base.astro';
             >
               Send message
             </button>
-
-            <!-- 3B: Mailto fallback link (shows if JS fails or user prefers email) -->
             <a
               href="mailto:toyintunde@gmail.com?subject=New%20enquiry%20from%20MasterCaterer%20site"
               class="text-sm text-brand-accent"
@@ -95,33 +92,64 @@ import Base from '../layouts/Base.astro';
     </section>
   </main>
 
-  <!-- Progressive enhancement: AJAX submit for Formspree -->
-  <script type="module">
-    const form = document.getElementById('contactForm');
-    const statusEl = document.getElementById('formStatus');
+  <!-- Prefill + AJAX submit -->
+<script type="module">
+  // Prefill from ?service=corporate|school-meals|private-events
+  const params = new URLSearchParams(window.location.search);
+  const svc = (params.get('service') || '').toLowerCase();
 
-    if (form && statusEl) {
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        statusEl.textContent = 'Sending…';
+  const MAP = {
+    'corporate': 'Corporate Catering',
+    'school-meals': 'School Meals',
+    'private-events': 'Private Events'
+  };
 
-        try {
-          const res = await fetch(form.action, {
-            method: 'POST',
-            headers: { 'Accept': 'application/json' },
-            body: new FormData(form),
-          });
+  const serviceField = document.getElementById('serviceField');
+  const message = document.getElementById('message');
 
-          if (res.ok) {
-            statusEl.textContent = 'Thanks! Your message has been sent.';
-            form.reset();
-          } else {
-            statusEl.textContent = 'Hmm, something went wrong. Please try again or use the email link.';
-          }
-        } catch {
-          statusEl.textContent = 'Network error. Please try again or use the email link.';
-        }
-      });
+  if (
+    serviceField &&
+    message &&
+    Object.prototype.hasOwnProperty.call(MAP, svc)
+  ) {
+    serviceField.value = svc;
+    const label = MAP[svc];
+
+    // Prefix the message (without overwriting user text)
+    if (message.value.trim() === '') {
+      message.value = `Service: ${label}\n\nPlease tell us your date, guest/student count, and location.`;
+    } else if (!/^Service:/.test(message.value)) {
+      message.value = `Service: ${label}\n\n` + message.value;
     }
-  </script>
+  }
+
+  // AJAX submit to Formspree (same behavior as before)
+  const form = document.getElementById('contactForm');
+  const statusEl = document.getElementById('formStatus');
+
+  if (form && statusEl) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Sending…';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          headers: { Accept: 'application/json' },
+          body: new FormData(form),
+        });
+        if (res.ok) {
+          statusEl.textContent = 'Thanks! Your message has been sent.';
+          form.reset();
+        } else {
+          statusEl.textContent =
+            'Hmm, something went wrong. Please try again or use the email link.';
+        }
+      } catch {
+        statusEl.textContent =
+          'Network error. Please try again or use the email link.';
+      }
+    });
+  }
+</script>
+
 </Base>
