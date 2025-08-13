@@ -1,12 +1,19 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
+
+const BASE = import.meta.env.BASE_URL
+
 const LINKS = [
-  { href: '/services', label: 'Services' },
-  { href: '/about',    label: 'About' },
-  { href: '/gallery',  label: 'Gallery' },
-  { href: '/contact',  label: 'Contact' },
+  { href: BASE + 'services', label: 'Services' },
+  { href: BASE + 'about',    label: 'About'    },
+  { href: BASE + 'gallery',  label: 'Gallery'  },
+  { href: BASE + 'contact',  label: 'Contact'  },
 ]
+
+
+
+// keep your logoUrl as you have it (BASE_URL + 'logo.png')
 
 // Public logo path (place file at <project>/public/logo.png)
 // BASE_URL makes it safe for subpath hosting (e.g., GitHub Pages)

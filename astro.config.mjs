@@ -1,19 +1,15 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
-
-import tailwindcss from '@tailwindcss/vite';
+import { defineConfig } from 'astro/config'
+import sitemap from '@astrojs/sitemap'
 
 import react from '@astrojs/react';
+import tailwind from '@tailwindcss/vite'
 
-import sitemap from '@astrojs/sitemap';
-
-// https://astro.build/config
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()]
-  },
-   site: 'https://otundeoladipo7021.github.io',
+  site: 'https://otundeoladipo7021.github.io',
   base: '/MasterCaterer/',
-
-  integrations: [react(), sitemap()]
-});
+  integrations: [sitemap(), react()],
+  vite: {
+    plugins: [tailwind()] },
+    
+})

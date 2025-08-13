@@ -1,54 +1,26 @@
 ---
-import '../styles/global.css';
+const BASE = import.meta.env.BASE_URL;
 ---
-<footer class="border-t border-brand-surface/60">
-  <div class="mx-auto max-w-6xl px-4 py-10 grid gap-8 md:grid-cols-4 text-sm">
-    <!-- Brand blurb -->
+<footer class="mt-12 border-t border-brand-surface/70 bg-white">
+  <div class="mx-auto max-w-6xl px-4 py-8 grid gap-6 sm:grid-cols-2 md:grid-cols-4 text-sm">
     <div>
-      <div class="font-extrabold tracking-wide">MasterCaterer</div>
-      <p class="mt-2 text-slate-600">
-        Authentic Nigerian cuisine for events of all sizes.
-      </p>
-    </div>
-
-    <!-- Services -->
-    <div>
-      <div class="font-semibold">Services</div>
+      <h3 class="font-semibold">Explore</h3>
       <ul class="mt-2 space-y-1">
-        <li><a href="/services">Overview</a></li>
-        <li><a href="/services/corporate">Corporate</a></li>
-        <li><a href="/services/school-meals">School Meals</a></li>
-        <li><a href="/services/private-events">Private Events</a></li>
+        <li><a href={`${BASE}`} class="link-underline">Home</a></li>
+        <li><a href={`${BASE}services`} class="link-underline">Services</a></li>
+        <li><a href={`${BASE}gallery`} class="link-underline">Gallery</a></li>
+        <li><a href={`${BASE}about`} class="link-underline">About</a></li>
+        <li><a href={`${BASE}contact`} class="link-underline">Contact</a></li>
       </ul>
     </div>
-
-    <!-- Company -->
     <div>
-      <div class="font-semibold">Company</div>
-      <ul class="mt-2 space-y-1">
-        <li><a href="/about">About</a></li>
-        <!-- You asked to remove FAQs from the top nav — we’ll surface them under Contact -->
-        <li><a href="/contact">Contact</a></li>
-      </ul>
+      <h3 class="font-semibold">Contact</h3>
+      <p class="mt-2">toyintunde@gmail.com<br/>+234 802 394 8656 <br/> Lagos, Nigeria</p>
     </div>
-
-    <!-- Contact -->
-    <div>
-      <div class="font-semibold">Contact</div>
-      <p class="mt-2">
-        toyintunde@gmail.com<br/>
-        +234 802 394 8656<br/>
-        Lagos, Nigeria
-      </p>
-
-      <!-- Social placeholders: add URLs later -->
-      <!--
-      <div class="mt-3 flex gap-3 text-brand-ink/70">
-        <a href="#" aria-label="Instagram">IG</a>
-        <a href="#" aria-label="Facebook">FB</a>
-        <a href="#" aria-label="TikTok">TT</a>
-      </div>
-      -->
+    <div class="sm:col-span-2">
+      <h3 class="font-semibold">MasterCaterer</h3>
+      <p class="mt-2 text-slate-600">Authentic Nigerian cuisine for corporate, schools, and private events.</p>
     </div>
   </div>
+  <div class="py-4 text-center text-xs text-slate-500">© {new Date().getFullYear()} MasterCaterer</div>
 </footer>

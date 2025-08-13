@@ -11,7 +11,7 @@ const items = Object.values(SERVICES);
     <ul class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
       {items.map((s) => (
         <li class="rounded-2xl bg-white border border-brand-surface overflow-hidden">
-          <a href={`/services/${s.slug}`} class="block h-full">
+          <a href={`${import.meta.env.BASE_URL}services/${s.slug}`} class="block h-full">
             <div class="aspect-[4/3] overflow-hidden">
               <img src={s.hero} alt={s.alt} loading="lazy" class="w-full h-full object-cover" />
             </div>
