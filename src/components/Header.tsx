@@ -20,7 +20,7 @@ export default function Header() {
   }, [])
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="top-0 z-50">
       {/* Top ribbon — gradient + centered logo + tagline */}
       <div className="bg-gradient-to-b from-brand-deep to-brand-primary border-b border-brand-ink/15">
         <div className="mx-auto max-w-6xl px-4 py-4 md:py-5 flex flex-col items-center gap-2">
