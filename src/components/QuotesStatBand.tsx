@@ -15,9 +15,9 @@ export default function QuoteStatsBand() {
             transition={{ duration: 0.4 }}
             className="md:col-span-2 text-xl md:text-2xl leading-relaxed text-brand-ink"
           >
-            “The Jollof was a showstopper and service was flawless from setup to cleanup.
-            Our guests are still talking about it!”
-            <footer className="mt-4 text-sm text-brand-ink/70">— Placeholder Name, Corporate Event</footer>
+            “The food was amazing and service was flawless from setup to cleanup.
+            Our guests are still talking about it! surely having Chef Toyin back for more”
+            <footer className="mt-4 text-sm text-brand-ink/70">— Business School Netherlands, Lagos Nigeria</footer>
           </motion.blockquote>
 
           {/* Three simple stats (no cards, no images) */}
