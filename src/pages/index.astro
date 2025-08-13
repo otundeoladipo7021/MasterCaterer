@@ -1,38 +1,16 @@
 ---
-import '../styles/global.css';
-import Header from '../components/Header.tsx';
-import Footer from '../components/Footer.astro';
+import Base from '../layouts/Base.astro';
 import Hero from '../components/Hero.tsx';
 import Services from '../components/Services.tsx';
 import QuoteStatsBand from '../components/QuotesStatBand.tsx';
 import GalleryStrip from '../components/GalleryStrip.tsx';
 ---
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>MasterCaterer — Header Test</title>
+<Base title="MasterCaterer — Home" description="Authentic Nigerian cuisine for corporate, schools, and private events.">
+  <main class="mx-auto max-w-6xl px-4 py-10">
+    <Hero client:load />
+  </main>
 
-    <!-- Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  </head>
-  <body class="min-h-screen">
-    <Header client:load />
-
-    <main class="mx-auto max-w-3xl p-6">
-      
-
-
-	  <Hero client:load />
-	  <Services client:load />
-	  <QuoteStatsBand client:load />
-
-	  <!-- Gallery strip with client:load to ensure images load after initial render -->
-	  <GalleryStrip client:load />
-    </main>
-
-	<Footer />
-  </body>
-</html>
+  <Services client:load />
+  <QuoteStatsBand client:load />
+  <GalleryStrip client:load />
+</Base>

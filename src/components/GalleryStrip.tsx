@@ -150,7 +150,7 @@ export default function GalleryStrip() {
 
         <div className="mt-8">
           <a
-            href="#"
+            href="/gallery"
             className="px-5 py-3 rounded-2xl border border-brand-surface hover:shadow-[var(--shadow-soft)] transition inline-block"
             aria-disabled="true"
             title="Full gallery coming soon"

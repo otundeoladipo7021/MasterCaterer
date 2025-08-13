@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+
+// Import your images as URLs (so `src` is a string)
+import plated_food from '../images/plated-food.jpeg?url';
+import plated_food2 from '../images/plated-food2.jpeg?url';
+import platter3 from '../images/platter3.jpeg?url';
+import setup2 from '../images/setup2.jpeg?url';
+import setup3 from '../images/setup3.jpeg?url';
+import shrimp_platter from '../images/shrimp-platter.jpeg?url';
+import platter_netherlands4 from '../images/platter-netherlands4.jpeg?url';
+
+/** Albums: 'corporate' | 'school' | 'private' */
+type Img = { src: string; alt?: string; album: string };
+
+const IMAGES: Img[] = [
+  { src: plated_food,          alt: 'Jollof with plantain',             album: 'corporate' },
+  { src: plated_food2,         alt: 'Fried rice, shrimps, and chicken', album: 'corporate' },
+  { src: platter3,             alt: 'School lunch trays',               album: 'school' },
+  { src: setup2,               alt: 'Balanced meals',                   album: 'school' },
+  { src: setup3,               alt: 'Wedding spread',                   album: 'private' },
+  { src: shrimp_platter,       alt: 'Intimate dinner',                  album: 'private' },
+  { src: platter_netherlands4, alt: 'Corporate lunch',                  album: 'corporate' },
+];
+
+const albums = ['all', 'corporate', 'school', 'private'];
+---
+<Base title="MasterCaterer — Gallery" description="Browse dishes and event setups.">
+  <!-- Inject PhotoSwipe CSS into <head> -->
+  <Fragment slot="head">
+    <link rel="stylesheet" href="https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.css" />
+  </Fragment>
+
+  <main class="mx-auto max-w-6xl px-4 py-10">
+    <h1 class="text-3xl md:text-4xl font-extrabold">Gallery</h1>
+    <p class="mt-2 text-slate-600">A look at our dishes and event setups. Click any tile to view full size.</p>
+
+    <!-- Filter chips -->
+    <div id="filters" class="mt-6 flex flex-wrap gap-2">
+      {albums.map((name) => (
+        <button
+          type="button"
+          class="filter-chip px-4 py-2 rounded-2xl border border-brand-surface text-sm
+                 data-[active=true]:bg-brand-primary data-[active=true]:text-white
+                 hover:shadow-[var(--shadow-soft)] transition"
+          data-filter={name}
+          data-active={name === 'all' ? 'true' : 'false'}
+          aria-pressed={name === 'all' ? 'true' : 'false'}
+        >
+          {name[0].toUpperCase() + name.slice(1)}
+        </button>
+      ))}
+    </div>
+
+    <!-- Small, uniform 4:3 tiles -->
+    <div id="gallery" class="mt-8 grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-10 gap-2">
+      {IMAGES.map((img) => (
+        <a
+          href={img.src}
+          class="group block"
+          data-album={img.album}
+          data-src={img.src}
+          target="_blank" rel="noreferrer"
+        >
+          <div class="relative w-full aspect-[4/3] overflow-hidden rounded-md border border-brand-surface bg-white">
+            <img
+              src={img.src}
+              alt={img.alt ?? ''}
+              loading="lazy"
+              class="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+            />
+          </div>
+          <div class="sr-only">{img.alt}</div>
+        </a>
+      ))}
+    </div>
+  </main>
+
+  <!-- PhotoSwipe + filter + natural-size detection -->
+  <script type="module">
+    import PhotoSwipeLightbox from 'https://unpkg.com/photoswipe@5.4.4/dist/photoswipe-lightbox.esm.min.js';
+
+    function getNaturalSize(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => resolve([img.naturalWidth || 1600, img.naturalHeight || 1067]);
+        img.onerror = () => resolve([1600, 1067]);
+        img.src = src;
+      });
+    }
+
+    (async function initGallery() {
+      const galleryEl = document.getElementById('gallery');
+      const chips = Array.from(document.querySelectorAll('.filter-chip'));
+      function applyFilter(name) {
+        for (const chip of chips) {
+          const on = chip.dataset.filter === name;
+          chip.dataset.active = on ? 'true' : 'false';
+          chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+        }
+        const items = galleryEl.querySelectorAll('[data-album]');
+        items.forEach((el) => {
+          const show = name === 'all' || el.getAttribute('data-album') === name;
+          el.classList.toggle('hidden', !show);
+        });
+      }
+      chips.forEach((chip) => chip.addEventListener('click', () => applyFilter(chip.dataset.filter || 'all')));
+
+      const anchors = Array.from(document.querySelectorAll('#gallery a'));
+      for (const a of anchors) {
+        const src = a.getAttribute('data-src') || a.getAttribute('href') || '';
+        if (!src) continue;
+        const [w, h] = await getNaturalSize(src);
+        a.setAttribute('data-pswp-width', String(w));
+        a.setAttribute('data-pswp-height', String(h));
+      }
+
+      const lightbox = new PhotoSwipeLightbox({
+        gallery: '#gallery',
+        children: 'a',
+        pswpModule: () => import('https://unpkg.com/photoswipe@5.4.4/dist/photoswipe.esm.min.js'),
+      });
+      lightbox.init();
+    })();
+  </script>
+</Base>
