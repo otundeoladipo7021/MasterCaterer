@@ -4,6 +4,7 @@
 import corporateHero from '../images/platter3.jpeg?url';
 import schoolHero    from '../images/setup2.jpeg?url';
 import privateHero   from '../images/setup3.jpeg?url';
+import { withBase } from '../lib/path';
 
 export type Service = {
   slug: 'corporate' | 'school-meals' | 'private-events';

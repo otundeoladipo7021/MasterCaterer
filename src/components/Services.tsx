@@ -1,6 +1,11 @@
 import { motion } from 'framer-motion'
 import { withBase } from '../lib/path'
 
+// Use images that already exist in src/images/
+import corporateImg from '../images/plated-food2.jpeg?url'
+import schoolImg    from '../images/setup2.jpeg?url'
+import privateImg   from '../images/setup3.jpeg?url'
+
 type Service = {
   slug: string
   title: string
@@ -14,31 +19,28 @@ const services: Service[] = [
     slug: 'corporate',
     title: 'Corporate Catering',
     blurb: 'Board meetings to conferences with reliable delivery and elegant presentation.',
-    image: 'src/components/corpcatering.jpeg', // <-- put a placeholder image
+    image: corporateImg,
     alt: 'Corporate catering buffet',
   },
   {
     slug: 'school-meals',
     title: 'School Meals',
     blurb: 'Nutritious, kid-approved menus with allergy-aware options.',
-    image: 'src/components/school-catering.jpg', // <-- put a placeholder image
+    image: schoolImg,
     alt: 'School meals trays',
   },
   {
     slug: 'private-events',
     title: 'Private Events',
     blurb: 'Birthdays, weddings, and intimate gatherings, crafted to your taste.',
-    image: 'src/components/private-catering.jpeg', // <-- put a placeholder image
+    image: privateImg,
     alt: 'Private dining table spread',
   },
 ]
 
 const container = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.05 },
-  },
+  show: { opacity: 1, transition: { staggerChildren: 0.12, delayChildren: 0.05 } },
 }
 
 const item = {
@@ -48,7 +50,6 @@ const item = {
 
 export default function Services() {
   return (
-    // Dark “ink” bar section (inverted)
     <section className="full-bleed bg-brand-ink text-white">
       <div className="mx-auto max-w-6xl px-4 py-14">
         <h2 className="text-2xl md:text-3xl font-extrabold">Our Services</h2>
@@ -68,9 +69,7 @@ export default function Services() {
               transition={{ type: 'spring', stiffness: 260, damping: 22 }}
               className="group rounded-2xl bg-white text-brand-ink overflow-hidden border border-brand-surface"
             >
-              <a
-                href={withBase(`services/${s.slug}`)}
-                className="block h-full">
+              <a href={withBase(`services/${s.slug}`)} className="block h-full">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={s.image}
