@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { withBase } from '../lib/path'
 
 type Service = {
   slug: string
@@ -67,7 +68,9 @@ export default function Services() {
               transition={{ type: 'spring', stiffness: 260, damping: 22 }}
               className="group rounded-2xl bg-white text-brand-ink overflow-hidden border border-brand-surface"
             >
-              <a href={`/services/${s.slug}`} className="block h-full">
+              <a
+                href={withBase(`services/${s.slug}`)}
+                className="block h-full">
                 <div className="aspect-[4/3] overflow-hidden">
                   <img
                     src={s.image}

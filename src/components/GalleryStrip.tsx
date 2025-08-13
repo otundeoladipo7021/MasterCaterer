@@ -4,14 +4,23 @@ import { withBase } from '../lib/path'
 
 type Shot = { src: string; alt: string }
 
+// ✅ Import images as URLs so they work on all routes & on GitHub Pages
+import plated_food from '../images/plated-food.jpeg?url'
+import plated_food2 from '../images/plated-food2.jpeg?url'
+import platter3 from '../images/platter3.jpeg?url'
+import setup2 from '../images/setup2.jpeg?url'
+import setup3 from '../images/setup3.jpeg?url'
+import shrimp_platter from '../images/shrimp-platter.jpeg?url'
+import platter_netherlands4 from '../images/platter-netherlands4.jpeg?url'
+
 const shots: Shot[] = [
-  { src: 'src/images/plated-food.jpeg', alt: 'Plated meals' },
-  { src: 'src/images/plated-food2.jpeg', alt: 'Fried rice, shrimps, and chicken' },
-  { src: 'src/images/platter3.jpeg', alt: 'Corporate trays ready to serve' },
-  { src: 'src/images/setup2.jpeg', alt: 'Breakfast Buffet Line Setup' },
-  { src: 'src/images/setup3.jpeg', alt: 'Private event setups' },
-  { src: 'src/images/shrimp-platter.jpeg', alt: 'Shrimp platter' },
-  { src: 'src/images/platter-netherlands4.jpeg', alt: 'Snacks and small chops' },
+  { src: plated_food,          alt: 'Plated meals' },
+  { src: plated_food2,         alt: 'Fried rice, shrimps, and chicken' },
+  { src: platter3,             alt: 'Corporate trays ready to serve' },
+  { src: setup2,               alt: 'Breakfast Buffet Line Setup' },
+  { src: setup3,               alt: 'Private event setups' },
+  { src: shrimp_platter,       alt: 'Shrimp platter' },
+  { src: platter_netherlands4, alt: 'Snacks and small chops' },
 ]
 
 const containerVariants = {
@@ -58,7 +67,6 @@ export default function GalleryStrip() {
     el.scrollBy({ left: dir === 'left' ? -step : step, behavior: 'smooth' })
   }
 
-  // Convert vertical wheel to horizontal scroll for convenience
   const onWheel = (e: React.WheelEvent<HTMLDivElement>) => {
     const el = scroller.current
     if (!el) return
@@ -94,7 +102,7 @@ export default function GalleryStrip() {
                          h-10 w-10 rounded-full bg-brand-ink/80 text-white backdrop-blur hover:bg-brand-ink
                          focus:outline-none z-30 pointer-events-auto"
             >
-              ‹
+              <span aria-hidden>‹</span>
             </button>
           )}
           {hasNext && (
@@ -106,7 +114,7 @@ export default function GalleryStrip() {
                          h-10 w-10 rounded-full bg-brand-ink/80 text-white backdrop-blur hover:bg-brand-ink
                          focus:outline-none z-30 pointer-events-auto"
             >
-              ›
+              <span aria-hidden>›</span>
             </button>
           )}
 
@@ -153,8 +161,6 @@ export default function GalleryStrip() {
           <a
             href={withBase('gallery')}
             className="px-5 py-3 rounded-2xl border border-brand-surface hover:shadow-[var(--shadow-soft)] transition inline-block"
-            aria-disabled="true"
-            title="Full gallery coming soon"
           >
             View full gallery
           </a>
