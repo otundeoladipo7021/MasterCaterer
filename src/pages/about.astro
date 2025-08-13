@@ -1,0 +1,276 @@
+---
+import Base from "../layouts/Base.astro";
+
+// Swap to any photos you like
+import aboutHero from "../images/setup3.jpeg?url";
+import aboutInset from "../images/boss.jpeg?url";
+
+const BASE = import.meta.env.BASE_URL;
+---
+
+<Base
+    title="MasterCaterer — About"
+    description="Our story, values, and the team behind MasterCaterer."
+>
+    <main class="mx-auto max-w-6xl px-4 py-12 md:py-16">
+        <!-- Heading -->
+        <header class="max-w-3xl">
+            <h1 class="text-3xl md:text-4xl font-extrabold">
+                About MasterCaterer
+            </h1>
+            <p class="mt-3 text-slate-600 leading-relaxed">
+                We craft authentic Nigerian cuisine for corporate functions,
+                school programs, and private celebrations — with reliability,
+                warmth, and presentation you can count on.
+                
+            </p>
+            <br />
+        </header>
+
+        <!-- Intro split -->
+        <section class="mt-16 md:mt-20">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start"
+            >
+            
+                <!-- Image (capped width/height) -->
+                <div class="order-1">
+                    <div
+                        class="rounded-3xl overflow-hidden shadow-[var(--shadow-soft)] max-w-[560px] mx-auto md:mx-0"
+                    >
+                        <img
+                            src={aboutHero}
+                            alt="MasterCaterer event setup"
+                            class="block w-full h-80 md:h-[420px] object-cover"
+                            loading="lazy"
+                        />
+                    </div>
+                </div>
+
+                <!-- Text -->
+                <div class="order-2">
+                    <h2 class="text-xl font-semibold text-brand-ink">
+                        Our story
+                    </h2>
+                    <div
+                        class="mt-3 space-y-4 text-slate-700 leading-relaxed md:pr-4 lg:pr-8"
+                    >
+                        <p>
+                            What started as family recipes cooked for friends
+                            became a dedicated catering service. We focus on
+                            consistency, timing, and generous portions — so you
+                            can relax and enjoy your event.
+                        </p>
+                        <p>
+                            From smoky party jollof to allergy-aware school
+                            menus, we tailor each service to the people you’re
+                            feeding. It’s hospitality first, every time.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 flex flex-wrap gap-3">
+                        <a
+                            href={`${BASE}services`}
+                            class="px-5 py-3 rounded-2xl bg-brand-primary text-white shadow-[var(--shadow-soft)] hover:translate-y-[-1px] transition"
+                            >Explore services</a
+                        >
+                        <a
+                            href={`${BASE}contact`}
+                            class="px-5 py-3 rounded-2xl border border-brand-surface hover:shadow-[var(--shadow-soft)] transition"
+                            >Get in touch</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br /><br />
+        <!-- Values -->
+        <section class="mt-16 md:mt-20">
+            <h2 class="text-xl font-semibold">What we stand for</h2>
+            <ul class="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <li
+                    class="rounded-2xl border border-brand-surface bg-white p-6 flex items-start gap-3"
+                >
+                    <span
+                        class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-surface/60 text-brand-primary"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            ><path
+                                d="M20 6L9 17l-5-5"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg
+                        >
+                    </span>
+                    <div>
+                        <h3 class="font-semibold">Consistency</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                            Reliable timing, portioning, and presentation at
+                            every event.
+                        </p>
+                    </div>
+                </li>
+                <li
+                    class="rounded-2xl border border-brand-surface bg-white p-6 flex items-start gap-3"
+                >
+                    <span
+                        class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-surface/60 text-brand-primary"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            ><path
+                                d="M5 21c8 0 14-6 14-14V5h-2C9 5 3 11 3 19v2h2z"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg
+                        >
+                    </span>
+                    <div>
+                        <h3 class="font-semibold">Care for people</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                            Dietary & allergy-aware menus, friendly staff, and
+                            tidy setups.
+                        </p>
+                    </div>
+                </li>
+                <li
+                    class="rounded-2xl border border-brand-surface bg-white p-6 flex items-start gap-3"
+                >
+                    <span
+                        class="mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-surface/60 text-brand-primary"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            class="h-5 w-5"
+                            fill="none"
+                            stroke="currentColor"
+                            ><path
+                                d="M12 3s4 4 4 8a4 4 0 1 1-8 0c0-4 4-8 4-8zM8 14a4 4 0 1 0 8 0"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"></path></svg
+                        >
+                    </span>
+                    <div>
+                        <h3 class="font-semibold">Authentic flavour</h3>
+                        <p class="text-sm text-slate-600 mt-1 leading-relaxed">
+                            Nigerian classics cooked with patience, spice, and
+                            balance.
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <br /><br />
+
+        <!-- Meet the chef -->
+        <section class="mt-16 md:mt-20">
+            <div
+                class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start space"
+            >
+                <!-- Text -->
+                <div class="order-2 md:order-1">
+                    <h2 class="text-xl font-semibold">Meet the chef</h2>
+                    <div
+                        class="mt-3 space-y-4 text-slate-700 leading-relaxed md:pr-4 lg:pr-8"
+                    >
+                        <p>
+                            Mrs. Toyin Tunde-Oladipo is the heart of
+                            MasterCaterer—a Nigerian chef and business owner who
+                            has cooked professionally for over two decades. What
+                            began as weekend orders for friends and church
+                            events grew into a full-service catering company
+                            trusted by families, schools, and corporate teams.
+                            <br /><br />
+                            Toyin’s reputation is simple and hard-won: food that
+                            tastes like home, presented with polish, delivered
+                            exactly when it’s needed. Her menus travel
+                            confidently between authentic Nigerian classics and
+                            international favorites. One day it’s smoky party
+                            jollof with grilled chicken, egusi with pounded yam,
+                            fisherman okra, suya-style skewers, and fresh
+                            puff-puff; the next it’s herb-roasted chicken with
+                            Mediterranean salads, Asian-inspired stir-fries, or
+                            plated continental dishes for boardroom lunches. She
+                            builds menus for diverse guests and dietary
+                            needs options for schools, vegetarian
+                            and allergy-aware substitutions for corporate teams,
+                            and elegant buffets for private celebrations. <br><br>
+                            Across
+                            hundreds of events, Toyin has led teams that serve
+                            intimate dinners to multi-hundred-guest functions
+                            with the same discipline: careful planning, generous
+                            portions, meticulous hygiene, and tidy setups. She
+                            sources reliably from local markets and trusted
+                            suppliers, trains her staff to the same standards
+                            she keeps in her own kitchen, and keeps
+                            communication clear so clients always know what’s
+                            next. Many of MasterCaterer’s bookings come from
+                            repeat clients and referrals, a reflection of
+                            Toyin’s consistency and warmth. Ask Toyin what
+                            drives her and she’ll say hospitality first, feeding
+                            people well, on time, and with joy. <br><br>
+                            Whether you’re
+                            planning a school meal program, a corporate retreat,
+                            or a family milestone, she’ll shape the menu to your
+                            guests, your budget, and your timeline then deliver
+                            it with a personal touch that turns a meal into a
+                            memory.
+                        </p>
+                       
+                    </div>
+                </div>
+
+                <!-- Image (smaller than story image) -->
+                <div class="order-1 md:order-2">
+                    <div
+                        class="rounded-3xl overflow-hidden border border-brand-surface bg-white max-w-[520px] mx-auto md:mx-0"
+                    >
+                        <img
+                            src={aboutInset}
+                            alt="Chef plating a dish"
+                            loading="lazy"
+                            class="block w-full h-64 md:h-80 object-cover"
+                        />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <br /><br />
+
+        <!-- CTA -->
+        <section
+            class="mt-16 md:mt-20 rounded-3xl bg-brand-surface/20 p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+        >
+            <div>
+                <h2 class="text-xl font-semibold">Planning an event?</h2>
+                <p class="text-slate-700 mt-1 leading-relaxed">
+                    Tell us your date and guest count — we’ll tailor a menu and
+                    quote.
+                </p>
+            </div>
+            <div class="flex gap-3">
+                <a
+                    href={`${BASE}contact`}
+                    class="px-5 py-3 rounded-2xl bg-brand-primary text-white shadow-[var(--shadow-soft)] hover:translate-y-[-1px] transition"
+                    >Contact us</a
+                >
+                <a
+                    href={`${BASE}gallery`}
+                    class="px-5 py-3 rounded-2xl border border-brand-surface hover:shadow-[var(--shadow-soft)] transition"
+                    >View gallery</a
+                >
+            </div>
+        </section>
+    </main>
+</Base>

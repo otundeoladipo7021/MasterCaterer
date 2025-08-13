@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Update to your deployed absolute URL when you set `site`:
+# Sitemap: https://mastercaterer.com/sitemap-index.xml
+# For GitHub Pages (example):
+# Sitemap: https://otundeoladipo7021.github.io/MasterCaterer/sitemap-index.xml

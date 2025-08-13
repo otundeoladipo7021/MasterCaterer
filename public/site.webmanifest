@@ -1,0 +1,12 @@
+{
+  "name": "MasterCaterer",
+  "short_name": "MasterCaterer",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#aa3325",
+  "icons": [
+    { "src": "logo.png", "sizes": "180x180", "type": "image/png", "purpose": "any" },
+    { "src": "logo.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

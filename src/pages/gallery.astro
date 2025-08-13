@@ -1,5 +1,41 @@
 ---
 import Base from '../layouts/Base.astro';
+import boss from '../images/boss.jpeg?url';
+import catering_setup from '../images/catering-setup.jpeg?url';
+
+import img_wa0032 from '../images/IMG-20241031-WA0032.jpg?url';
+import img_wa0033 from '../images/IMG-20241031-WA0033.jpg?url';
+import img_wa0034 from '../images/IMG-20241031-WA0034.jpg?url';
+import img_wa0035 from '../images/IMG-20241031-WA0035.jpg?url';
+import img_wa0036 from '../images/IMG-20241031-WA0036.jpg?url';
+import img_wa0037 from '../images/IMG-20241031-WA0037.jpg?url';
+import img_wa0038 from '../images/IMG-20241031-WA0038.jpg?url';
+import img_wa0039 from '../images/IMG-20241031-WA0039.jpg?url';
+import img_wa0040 from '../images/IMG-20241031-WA0040.jpg?url';
+import img_wa0041 from '../images/IMG-20241031-WA0041.jpg?url';
+import img_wa0042 from '../images/IMG-20241031-WA0042.jpg?url';
+import img_wa0043 from '../images/IMG-20241031-WA0043.jpg?url';
+import img_wa0044 from '../images/IMG-20241031-WA0044.jpg?url';
+import img_wa0045 from '../images/IMG-20241031-WA0045.jpg?url';
+import img_wa0046 from '../images/IMG-20241031-WA0046.jpg?url';
+import img_wa0047 from '../images/IMG-20241031-WA0047.jpg?url';
+import img_wa0048 from '../images/IMG-20241031-WA0048.jpg?url';
+import img_wa0049 from '../images/IMG-20241031-WA0049.jpg?url';
+import img_wa0050 from '../images/IMG-20241031-WA0050.jpg?url';
+import img_wa0051 from '../images/IMG-20241031-WA0051.jpg?url';
+import img_wa0053 from '../images/IMG-20241031-WA0053.jpg?url';
+import img_wa0054 from '../images/IMG-20241031-WA0054.jpg?url';
+import img_wa0055 from '../images/IMG-20241031-WA0055.jpg?url';
+import img_wa0056 from '../images/IMG-20241031-WA0056.jpg?url';
+import img_wa0057 from '../images/IMG-20241031-WA0057.jpg?url';
+import img_wa0058 from '../images/IMG-20241031-WA0058.jpg?url';
+
+import nethconsulate from '../images/nethconsulate.jpeg?url';
+import smallchops from '../images/smallchops.jpg?url';
+import snackplatter from '../images/snackplatter.jpeg?url';
+import stick_snacks from '../images/stick-snacks.jpeg?url';
+import yoghurt_bowl from '../images/yoghurt-bowl.jpeg?url';
+
 
 // Import your images as URLs (so `src` is a string)
 import plated_food from '../images/plated-food.jpeg?url';
@@ -14,14 +50,54 @@ import platter_netherlands4 from '../images/platter-netherlands4.jpeg?url';
 type Img = { src: string; alt?: string; album: string };
 
 const IMAGES: Img[] = [
-  { src: plated_food,          alt: 'Jollof with plantain',             album: 'corporate' },
-  { src: plated_food2,         alt: 'Fried rice, shrimps, and chicken', album: 'corporate' },
-  { src: platter3,             alt: 'School lunch trays',               album: 'school' },
-  { src: setup2,               alt: 'Balanced meals',                   album: 'school' },
-  { src: setup3,               alt: 'Wedding spread',                   album: 'private' },
-  { src: shrimp_platter,       alt: 'Intimate dinner',                  album: 'private' },
-  { src: platter_netherlands4, alt: 'Corporate lunch',                  album: 'corporate' },
+  // --- originals ---
+  { src: plated_food,          alt: 'Jollof with plantain',                         album: 'corporate' },
+  { src: plated_food2,         alt: 'Fried rice, shrimps, and chicken',             album: 'corporate' },
+  { src: platter3,             alt: 'School lunch trays',                           album: 'school' },
+  { src: setup2,               alt: 'Balanced meals',                               album: 'school' },
+  { src: setup3,               alt: 'Wedding spread',                               album: 'private' },
+  { src: shrimp_platter,       alt: 'Intimate dinner',                              album: 'private' },
+  { src: platter_netherlands4, alt: 'Corporate lunch',                              album: 'corporate' },
+
+  // --- new additions ---
+  { src: boss,              alt: 'Chef Toyin Tunde-Oladipo portrait',               album: 'private' },
+  { src: catering_setup,    alt: 'Catering setup — buffet and chafing dishes',      album: 'corporate' },
+
+  // WhatsApp batch (defaulting to corporate; change to 'private' or 'school' as you see fit)
+  { src: img_wa0032,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0033,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0034,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0035,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0036,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0037,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0038,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0039,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0040,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0041,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0042,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0043,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0044,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0045,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0046,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0047,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0048,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0049,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0050,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0051,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0053,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0054,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0055,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0056,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0057,        alt: 'Event catering photo',                            album: 'corporate' },
+  { src: img_wa0058,        alt: 'Event catering photo',                            album: 'corporate' },
+
+  { src: nethconsulate,    alt: 'Netherlands Consulate event',                      album: 'corporate' },
+  { src: smallchops,       alt: 'Small chops platter',                              album: 'corporate' },
+  { src: snackplatter,     alt: 'Snack platter',                                    album: 'corporate' },
+  { src: stick_snacks,     alt: 'Skewered snacks',                                  album: 'corporate' },
+  { src: yoghurt_bowl,     alt: 'Yoghurt bowl with fruit — school program',         album: 'school' },
 ];
+
 
 const albums = ['all', 'corporate', 'school', 'private'];
 ---
